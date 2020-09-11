@@ -3,11 +3,11 @@ const path = require('path');
 
 const app = express();
 
-const user = require('./controller');
+const login = require('./routes');
 
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(user);
+app.use(login);
 
 module.exports = app;
