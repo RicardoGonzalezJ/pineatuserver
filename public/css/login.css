@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.hero-bg {
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url("../images/Toonami_Wallpapers.jpg");
+  
+    /*set a specific height*/
+    height: 100%;
+    width: 100%;
+  
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+  
+  }
+
+#logandreg {
+     color: white;
+}
+
+.form-box {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    padding: 5px;
+}
+
+.btn-box {
+    width: 200px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+    text-align: center;
+}
+.t-btn {
+    padding: 5px 20px;
+    width: 90px;
+    position: relative;
+}
+#login {
+    left: 50px;
+}
+
+#register {
+    left: 450px;
+}
+
+.row-container {
+    margin: auto;
+    width: 50%;
+    height: 400px;
+    border: 1px solid#000 !important; 
+}
