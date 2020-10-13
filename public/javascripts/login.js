@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 const logForm = document.getElementById('login');
 const regForm = document.getElementById('register');
 const btnLog = document.getElementById('btn-log');
