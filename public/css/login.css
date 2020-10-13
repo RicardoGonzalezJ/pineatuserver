@@ -5,7 +5,8 @@
 
 .hero-bg {
 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url("../images/Toonami_Wallpapers.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)),url("../images/serverIMG.jpg");
   
     /*set a specific height*/
     height: 100%;
@@ -36,7 +37,7 @@
     width: 210px;
     margin: 35px auto;
     position: relative;
-    box-shadow: 0 0 20px 9px #ff61241f;
+    box-shadow: 0 0 20px 9px #000;
     border-radius: 30px;
     text-align: center;
 }
@@ -67,4 +68,11 @@
     width: 50%;
     height: 400px;
     border: 1px solid#000 !important; 
+}
+
+.section-head {
+    text-align: center;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: -50px;
 }
