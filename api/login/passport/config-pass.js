@@ -2,7 +2,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const {
-  findUserByName, // verifyPassword, userSignup, findUserByID,
+  findUserByEmail, // verifyPassword, userSignup, findUserByID,
 } = require('../model');
 
 const option = {
@@ -74,7 +74,7 @@ passport.use('local-signup', new LocalStrategy(
 */
 /**
  * LocalStrategy signin:
- * 1. findUserByName: check if user already exists
+ * 1. findUserByEmail: check if user already exists
  *    if yes then it retrieve the user data from db to return callback done.
  * 2. verifyPassword: check if password is correct.
  */
@@ -82,7 +82,7 @@ passport.use('local-signin', new LocalStrategy(
   option,
   (req, username, password, done) => {
     // #1
-    findUserByName(username, (err, user) => {
+    findUserByEmail(username, (err, user) => {
       if (err) {
         console.log('error: config-passport.js local-signin findUserByName', err);
         return done(err);
