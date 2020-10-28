@@ -7,6 +7,7 @@ const {
 
 const option = {
   passReqToCallback: true,
+  usernameField: 'userEmail',
 };
 
 const init = require('../../../config/passport/serialize');
