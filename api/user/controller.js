@@ -1,11 +1,10 @@
 const model = require('./model');
 
-exports.listOfUsers = (req, res) => {
-  model.selectForUser((error, resp) => {
-    if (error) {
-      console.log('Error on user controller.js', error);
-    } else {
-      res.status(201).json(resp);
-    }
-  });
+exports.listOfUsers = async (req, res) => {
+  try {
+    const userList = await model.selectForUser();
+    res.status(201).json({ userList });
+  } catch (error) {
+    console.log('error on user controller.js listOfUsers', error);
+  }
 };
