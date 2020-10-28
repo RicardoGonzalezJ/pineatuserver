@@ -1,9 +1,9 @@
 const model = require('./model');
 
 exports.listOfUsers = (req, res) => {
-  model.selectForUser((err, resp) => {
-    if (err) {
-      console.log('Error on user controllers.js', err);
+  model.selectForUser((error, resp) => {
+    if (error) {
+      console.log('Error on user controller.js', error);
     } else {
       res.status(201).json(resp);
     }
