@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const exsession = require('express-session');
 const ConPgSimple = require('connect-pg-simple')(exsession);
+const passport = require('passport');
 
 const dbcon = require('./config/dbcon/dbcon');
 
@@ -36,6 +37,9 @@ app.use(exsession({
 
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', login);
 app.use('/user', user);
