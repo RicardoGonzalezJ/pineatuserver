@@ -1,3 +1,4 @@
 node_modules
 .env
 dbqueries.sql
+.vscode
