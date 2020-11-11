@@ -10,9 +10,8 @@ const passport = require('passport');
 
 const dbcon = require('./config/dbcon/dbcon');
 
-const login = require('./api/login');
+const login = require('./api/access_system');
 const user = require('./api/user');
-// const users = require('./routes/users');
 
 const app = express();
 
@@ -41,9 +40,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', login);
+app.use('/accesssytem', login);
 app.use('/user', user);
-// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

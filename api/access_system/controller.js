@@ -14,7 +14,7 @@ exports.signin = (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.redirect('/');
+      return res.redirect('/accesssytem');
     }
     req.logIn(user, (logInErr) => {
       if (logInErr) {
@@ -35,7 +35,7 @@ exports.signup = (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.redirect('/');
+      return res.redirect('/accesssytem');
     }
     req.logIn(user, (logInErr) => {
       if (logInErr) {
@@ -56,7 +56,7 @@ exports.logout = (req, res) => {
         console.log('err deleteSession accesssystem controllers.js', err);
         throw err;
       } else {
-        res.redirect('/accesssystem/login');
+        res.redirect('/accesssystem');
       }
     });
   });

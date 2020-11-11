@@ -5,8 +5,8 @@ const ctr = require('./controller');
 
 router.get('/', ctr.renderLogin);
 
-router.post('/', ctr.signin);
+router.post('/signin', ctr.signin);
 
-router.post('/', ctr.signup);
+router.post('/signup', ctr.signup);
 
 module.exports = router;
