@@ -16,7 +16,7 @@ exports.findUserByEmail = (userEmail, cb) => {
 // ====== FUNCTIONS FOR LOCAL-SIGNUP =======
 // find users by their id.
 exports.findUserByID = (id, cb) => {
-  const query = 'SELECT * FROM users WHERE id = ?';
+  const query = 'SELECT * FROM users WHERE id = $1';
   const value = [id];
   dbcon.query(query, value, cb);
 };
@@ -24,7 +24,7 @@ exports.findUserByID = (id, cb) => {
 // userSignup insert user into db and encrypt user password usign bcrypt.
 exports.userSignup = (user, cb) => {
   const query = `INSERT INTO users(username, password)
-                               VALUES (?, ?)`;
+                               VALUES ($1, $2)`;
   const values = [user.username, user.password];
   dbcon.query(query, values, cb);
 };
@@ -43,7 +43,7 @@ exports.isAuthenticated = (req, res, next) => {
    * Function to delete sessions
    */
 exports.deleteSession = (sessionID, cb) => {
-  const query = 'DELETE FROM sessions WHERE session_id = ?';
+  const query = 'DELETE FROM sessions WHERE session_id = $1';
   const value = [sessionID];
   dbcon.query(query, value, cb);
 };
