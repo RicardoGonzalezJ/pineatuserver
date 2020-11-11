@@ -29,6 +29,11 @@ exports.userSignup = (user, cb) => {
   dbcon.query(query, values, cb);
 };
 
+exports.checkPassword = (password, cb) => {
+  const query = 'SELECT password = $1 FROM users;';
+  dbcon.query(query, [password], cb);
+};
+
 /**
  * Function to secure end points
  */
