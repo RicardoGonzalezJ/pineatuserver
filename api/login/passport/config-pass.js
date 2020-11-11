@@ -2,7 +2,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const {
-  findUserByEmail, userSignup, findUserByID,
+  findUserByEmail, checkPassword, userSignup, findUserByID,
 } = require('../model');
 
 const option = {
@@ -33,7 +33,7 @@ passport.use('local-signup', new LocalStrategy(
           return done(err);
         }
         // console.log('user', user[0]);
-        if (user[0]) {
+        if (user.rows[0]) {
           // console.log('this user already exists');
           return done(null, false);
           // return done(null, false, req.flash('message', 'El usuario ya existe.'));
@@ -48,12 +48,12 @@ passport.use('local-signup', new LocalStrategy(
             return done(errSignup);
           }
           // #3
-          findUserByID(dn.insertId, (errID, userData) => {
+          findUserByID(dn.rows[0].userid, (errID, userData) => {
             if (errID) {
               console.log('error: config-pass.js local-signup findUserByID', errID);
             }
             // console.log('done config-pass.js userSignup', userData[0]);
-            return done(null, userData[0]);
+            return done(null, userData.rows[0]);
           });
         });
       });
@@ -76,16 +76,24 @@ passport.use('local-signin', new LocalStrategy(
         console.log('error: config-passport.js local-signin findUserByEmail', err);
         return done(err);
       }
-      if (!user[0]) {
+      if (!user.rows[0]) {
+        console.log('usuario no existe');
         return done(null, false);
         // return done(null, false, req.flash('message', 'El usuario no existe'));
       }
-      if (password !== user[0].password) {
-        return done(null, false);
+      checkPassword(password, (passError, isMatch) => {
+        if (passError) {
+          console.log('error: config-passport.js local-signin checkPassword', passError);
+          return done(err);
+        }
+        if (!isMatch) {
+          console.log('password is incorrect');
+          return done(null, false);
         // return done(null, false, req.flash('message', 'La contraseña es incorrecta'));
-      }
-      // console.log('this is user config-pass.js local-signin', user[0]);
-      return done(null, user[0]);
+        }
+        // console.log('this is user config-pass.js local-signin', user[0]);
+        return done(null, user.rows[0]);
+      });
     });
   },
 ));
