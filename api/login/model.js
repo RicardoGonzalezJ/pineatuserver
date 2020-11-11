@@ -24,7 +24,7 @@ exports.findUserByID = (id, cb) => {
 // userSignup insert user into db and encrypt user password usign bcrypt.
 exports.userSignup = (user, cb) => {
   const query = `INSERT INTO users(username, password)
-                               VALUES ($1, $2)`;
+                               VALUES ($1, $2) RETURNING userid`;
   const values = [user.username, user.password];
   dbcon.query(query, values, cb);
 };

@@ -17,7 +17,7 @@ init();
 
 /**
  * LocalStrategy signup:
- * 1. findUserByName: check if user already exists
+ * 1. findUserByEmail: check if user already exists
  *    if yes then it redirect to login endpoint.
  * 2. userSignup: Create the user on db if user does not exists.
  * 3. findUSerByID: retrieve the user data from db to return callback done.
